@@ -42,9 +42,7 @@ function calc(num1, op, num2){
 }
 
 function eval(queue){
-    // while (op_list.includes(queue[queue.length - 1])){
-    //     queue = queue.splice(0,queue.length-1);
-    // } 
+
     while (queue.length > 1) {
         queue = [calc(queue[0],queue[1],queue[2])].concat(queue.splice(3,queue.length))
     }
@@ -52,7 +50,14 @@ function eval(queue){
 }
 
 $(".num-btn").click(function(event){
-    if (op_list.includes(prevButtonClick) || prevButtonClick === "="){
+
+    if (op_list.includes(prevButtonClick)){
+        var entry = parseInt(event.currentTarget.innerHTML);
+        displayNumOnScreen(entry);
+        prevButtonClick = event.currentTarget.innerHTML;
+    }
+    else if (prevButtonClick === "="){
+        currentQueue = [];
         var entry = parseInt(event.currentTarget.innerHTML);
         displayNumOnScreen(entry);
         prevButtonClick = event.currentTarget.innerHTML;
@@ -75,7 +80,7 @@ $(".clear").click(function(event){
 
 
 $(".operator").click(function(event){
-    console.log(num_list.includes(prevButtonClick));
+
     if (prevButtonClick === ""){
         prevButtonClick = event.currentTarget.innerHTML;
     }
@@ -97,7 +102,7 @@ $(".operator").click(function(event){
         prevButtonClick = event.currentTarget.innerHTML;
     }
     else {
-        console.log("After operator: " + "others");
+
     }
     
 })
