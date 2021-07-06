@@ -9,7 +9,13 @@ var currentQueue = [];
 var prevButtonClick = ""
 ;
 function displayNumOnScreen(num){
-    $("h1").text(num);
+    if (num > 9999999){
+        $("h1").text("TOO LARGE")
+    }
+    else {
+        $("h1").text(num);
+    }
+    
 }
 
 function clearDisplay(){
