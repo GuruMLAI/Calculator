@@ -10,7 +10,7 @@ var prevButtonClick = ""
 ;
 function displayNumOnScreen(num){
     if (num > 9999999){
-        $("h1").text("TOO LARGE")
+        $("h1").text("TOO LARGE");
     }
     else {
         $("h1").text(num);
